@@ -41,37 +41,37 @@ const workoutSchema = new Schema({
   },
 });
 
-WorkoutSchema.virtual("totalDuration").get(function () {
+workoutSchema.virtual("totalDuration").get(function () {
   return this.exercises.reduce((total, exercise) => {
     return total + exercise.duration;
   }, 0);
 });
 
-WorkoutSchema.virtual("totalWeight").get(function () {
+workoutSchema.virtual("totalWeight").get(function () {
   return this.exercises.reduce((total, exercise) => {
     return total + exercise.weight;
   }, 0);
 });
 
-WorkoutSchema.virtual("totalReps").get(function () {
+workoutSchema.virtual("totalReps").get(function () {
   return this.exercises.reduce((total, exercise) => {
     return total + exercise.reps;
   }, 0);
 });
 
-WorkoutSchema.virtual("totalSets").get(function () {
+workoutSchema.virtual("totalSets").get(function () {
   return this.exercises.reduce((total, exercise) => {
     return total + exercise.sets;
   }, 0);
 });
 
-WorkoutSchema.virtual("totalDistance").get(function () {
+workoutSchema.virtual("totalDistance").get(function () {
   return this.exercises.reduce((total, exercise) => {
     return total + exercise.distance;
   }, 0);
 });
 
 
-const Workout = mongoose.model("Workout", WorkoutSchema);
+const Workout = mongoose.model("Workout", workoutSchema);
 
 module.exports = Workout;
