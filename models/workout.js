@@ -40,3 +40,38 @@ const workoutSchema = new Schema({
     virtuals: true,
   },
 });
+
+WorkoutSchema.virtual("totalDuration").get(function () {
+  return this.exercises.reduce((total, exercise) => {
+    return total + exercise.duration;
+  }, 0);
+});
+
+WorkoutSchema.virtual("totalWeight").get(function () {
+  return this.exercises.reduce((total, exercise) => {
+    return total + exercise.weight;
+  }, 0);
+});
+
+WorkoutSchema.virtual("totalReps").get(function () {
+  return this.exercises.reduce((total, exercise) => {
+    return total + exercise.reps;
+  }, 0);
+});
+
+WorkoutSchema.virtual("totalSets").get(function () {
+  return this.exercises.reduce((total, exercise) => {
+    return total + exercise.sets;
+  }, 0);
+});
+
+WorkoutSchema.virtual("totalDistance").get(function () {
+  return this.exercises.reduce((total, exercise) => {
+    return total + exercise.distance;
+  }, 0);
+});
+
+
+const Workout = mongoose.model("Workout", WorkoutSchema);
+
+module.exports = Workout;
